@@ -2,11 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 30vh;
   margin: 0%;
   flex-direction: column;
   background-color: rgb(83, 133, 83);
   font-size: 2rem;
+}
+.current-weather {
+  display: flex;
+  justify-content: space-between;
 }
 
 .search-bar {
@@ -15,10 +19,18 @@
 }
 
 .search-button {
+  height: 1.5vh;
   margin: 0.6rem;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
+.forecast-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding-top: 4rem;
+}
 .forecast-display {
   display: flex;
   flex-direction: row;
