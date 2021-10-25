@@ -1,4 +1,5 @@
-const weatherCardsContainer = $("#weather-cards-container");
+const weatherCardsContainer = $(".forecast-display");
+const currentWeatherContainer = $(".current-weather-container");
 
 const API_KEY = "393609ac7b2e5f25ccdd00e626ee13dd";
 
@@ -82,7 +83,7 @@ const setCitiesInLS = function (cityName) {
 };
 
 const renderCurrentWeatherCard = function (currentData) {
-  const currentWeatherCard = ` <div class="current-weather">
+  const currentWeatherCard = `<div class="current-weather">
           <div class="city">
             <h2>
               ${currentData.name} ${currentData.date}
@@ -103,20 +104,8 @@ const renderCurrentWeatherCard = function (currentData) {
           )}">${currentData.uvi}</span></div>
           </div>`;
 
-  weatherCardsContainer.append(currentWeatherCard);
+  currentWeatherContainer.append(currentWeatherCard);
 };
-
-<div class="forecast-card">
-  <h3></h3>
-  <div class="date">${each.date}</div>
-  <div class="temperature">Temperature: ${each.temperature}&deg;F</div>
-  <img src="https://openweathermap.org/img/w/${each.iconCode}.png" />
-
-  <div class="weather-info">Sunny</div>
-  <div class="humidity">Humidity: ${each.humidity}</div>
-  <div class="wind">Wind-Speed: ${each.wind} MPH</div>
-  <div class="uv-index">UV-Index: Moderate</div>
-</div>;
 
 // constructing forecast cards
 const renderForecastWeatherCards = function (forecastData) {
@@ -135,7 +124,6 @@ const renderForecastWeatherCards = function (forecastData) {
   const forecastCards = forecastData.map(constructForecastCard).join("");
 
   const forecastCardsContainer = `<div class="bg-white border">
-    <h3 class="p-3 text-center">5-Day Forecast:</h3>
     <div
         class="m-3 d-flex flex-wrap justify-content-around"
         id=""
@@ -186,6 +174,7 @@ const renderWeatherInfo = async function (cityName) {
   const weatherData = await getWeatherData(cityName);
 
   weatherCardsContainer.empty();
+  currentWeatherContainer.empty();
 
   renderWeatherCards(weatherData);
 };
